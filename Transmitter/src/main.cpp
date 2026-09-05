@@ -21,6 +21,7 @@ void setup() {
   // Attach GPIO
   Trans.attachGPIO();
 
+  
   // ESP-NOW setup
   Espnow.setupESPNOW(receiverMAC);
   delay(100);
@@ -28,12 +29,12 @@ void setup() {
 
 void loop() {
   
-  // Read Joystick Value
+  // Read Joystick Values
   int xVal = Joystick.joystickAnalogRead(xPin);
   int yVal = Joystick.joystickAnalogRead(yPin);
   Car.horn = Joystick.joystickDigitalRead(BUTTON);
   
-  // Manipulate Value
+  // Manipulate Values
   Joystick.manipulateValue(&Car, xVal, yVal);
   
   // Send Data
