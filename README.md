@@ -1,7 +1,14 @@
 # **ESP32 Embedded Wireless Vehicle Control System**
 
-    This project is to create a 4WD car wirelessly controlled by joystick using ESP-NOW communication
+*This project is to create a 4WD car wirelessly controlled by joystick using ESP-NOW communication*
 
+## **Feature**
+- PWM speed control on motor
+- Wireless Control using ESP-NOW communication
+- Deadzone filtering to avoid joystick drift
+- Failsafe implementation to automatically stop the car upon connection loss
+- Isolate power supplies for ESP32 receiver and motors to prevent voltage drops
+  
 ## **Hardware**
 - 2 x ESP32
 - Joystick module
