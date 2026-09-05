@@ -6,5 +6,4 @@ typedef struct controlData{
   int rightSpeed;
   int horn;
 } ControlData;
-
 #endif
