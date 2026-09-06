@@ -59,7 +59,9 @@ esp32-embedded-vehicle-control-system/
 ├──Shared_Lib/
 |  └──ControlData/include/ControlData.h
 ├──Transmitter/
-|   ├──include/GPIO.h
+|   ├──include
+|   |   ├──GPIO.h
+|   |   └──debugTrans.h
 |   ├──lib/
 |   |   ├──Joystick
 |   |   |   ├──include/Joystick.h
@@ -69,11 +71,14 @@ esp32-embedded-vehicle-control-system/
 |   |   |   └──src/ESPNOWTrans.cpp
 |   ├──src/
 |   |   ├──GPIO.cpp
+|   |   ├──debugTrans.cpp
 |   |   └──main.cpp
 |   ├──.gitignore
 |   └──platformio.ini
 ├──Receiver
-|   ├──include/GPIO.h
+|   ├──include
+|   |   ├──GPIO.h
+|   |   └──debugReceiv.h
 |   ├──lib/
 |   |   ├──Buzzer
 |   |   |   ├──include/Buzzer.h
@@ -89,6 +94,7 @@ esp32-embedded-vehicle-control-system/
 |   |   |   └──src/Motor.cpp
 |   ├──src/
 |   |   ├──GPIO.cpp
+|   |   ├──debugReceiv.cpp
 |   |   └──main.cpp
 |   ├──.gitignore
 |   └──platformio.ini
