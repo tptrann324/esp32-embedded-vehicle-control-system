@@ -2,16 +2,16 @@
 #include <Wifi.h>
 #include <esp_now.h>
 #include "ESPNOWTrans.h" 
+#include "debugTrans.h"
+
+bool DEBUG = true; // Set to true to enable debug messages
 
 // Set up ESP-NOW
-void ESPNOW::setupESPNOW(const uint8_t* receiverMAC){
+void setupESPNOW(const uint8_t* receiverMAC) {
 
     // Initialize ESP-NOW
-    if (esp_now_init() != ESP_OK){
-        Serial.println("ESP-NOW initialization failed");
-        return;
-    }
-    Serial.println("ESP-NOW receiver ready");
+    esp_err_t initResult = esp_now_init();
+    initDebug(initResult);
 
     // Initialize struct defined by ESP-NOW library
     esp_now_peer_info_t peerInfo = {};            
@@ -20,15 +20,12 @@ void ESPNOW::setupESPNOW(const uint8_t* receiverMAC){
     peerInfo.encrypt = false; 
 
     // Add ESP32_Receiver 
-    if (esp_now_add_peer(&peerInfo) != ESP_OK) {
-        Serial.println("Failed to add receiver!");
-        return;
-    }
-    Serial.println("ESP-NOW Transmitter Ready!");
+    esp_err_t addResult = esp_now_add_peer(&peerInfo);
+    addReceiverDebug(addResult);
 }
 
 // Send data to Receiver
-void ESPNOW::sendData(const uint8_t* receiverMAC, const ControlData* car, int carSize) {
+void sendData(const uint8_t* receiverMAC, const ControlData* car, int carSize) {
     esp_err_t result = esp_now_send(receiverMAC, (uint8_t*) car, carSize);
 
     if (result == ESP_OK) {

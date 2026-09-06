@@ -18,10 +18,9 @@ void setup() {
   Serial.begin(115200);
   WiFi.mode(WIFI_STA);    // Turn on WiFi station
 
-  // Attach GPIO
+  // Attach  Joystick GPIO
   Trans.attachGPIO();
 
-  
   // ESP-NOW setup
   Espnow.setupESPNOW(receiverMAC);
   delay(100);
