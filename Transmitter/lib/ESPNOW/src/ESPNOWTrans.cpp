@@ -4,8 +4,6 @@
 #include "ESPNOWTrans.h" 
 #include "debugTrans.h"
 
-bool DEBUG = true; // Set to true to enable debug messages
-
 // Set up ESP-NOW
 void setupESPNOW(const uint8_t* receiverMAC) {
 
@@ -25,14 +23,8 @@ void setupESPNOW(const uint8_t* receiverMAC) {
 }
 
 // Send data to Receiver
-void sendData(const uint8_t* receiverMAC, const ControlData* car, int carSize) {
-    esp_err_t result = esp_now_send(receiverMAC, (uint8_t*) car, carSize);
+void sendData(const uint8_t* receiverMAC, const ControlData* car, int carSize, esp_err_t &lastResult, esp_err_t &currentResult) {
+    currentResult = esp_now_send(receiverMAC, (uint8_t*) car, carSize);
 
-    if (result == ESP_OK) {
-        Serial.println("Data Sent");
-    }
-    else {
-        Serial.println("Failed to send data");
-        result = esp_now_send(receiverMAC, (uint8_t*) car, carSize);
-    }
+    sendDataDebug(lastResult, currentResult);
 }

@@ -4,6 +4,6 @@
 #include "ControlData.h"
 
 void setupESPNOW(const uint8_t*);
-void sendData(const uint8_t*, const ControlData*, int);
+void sendData(const uint8_t*, const ControlData*, int, esp_err_t&, esp_err_t&);
 
 #endif

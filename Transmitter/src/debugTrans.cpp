@@ -23,9 +23,18 @@ void addReceiver(esp_err_t addResult) {
 }
 
 // Sending Data Debug
-void sendDataDebug(esp_err_t sendResult) {
+void sendDataDebug(esp_err_t &lastSendResult, esp_err_t &currentSendResult) {
     // Send message at the first time successfull
     // Then only print if the sendResult change
+    if (lastSendResult != currentSendResult) {   
+        if (currentSendResult == ESP_OK) {
+            Serial.println("Data Sent!");
+        }
+        else {
+            Serial.println("Failed to send data!");
+        }
+    lastSendResult = currentSendResult;
+    }
 }
 
 #endif  

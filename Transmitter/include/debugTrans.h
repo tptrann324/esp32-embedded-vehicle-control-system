@@ -8,9 +8,9 @@
 
 
 // --------DEBUG ESP-NOW TRANSMITTER--------
-void initDebug(esp_err_t);              // Initialization Debug 
-void addReceiverDebug(esp_err_t);       // Adding ESP32_Receiver Debug
-void sendDataDebug(esp_err_t);          // Sending Data Debug
+void initDebug(esp_err_t);                         // Initialization Debug 
+void addReceiverDebug(esp_err_t);                  // Adding ESP32_Receiver Debug
+void sendDataDebug(esp_err_t, esp_err_t);          // Sending Data Debug
 //----------------------------------------
 
 
