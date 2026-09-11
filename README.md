@@ -8,6 +8,7 @@
 - Deadzone filtering to avoid joystick drift
 - Failsafe implementation to automatically stop the car upon connection loss
 - Isolate power supplies for ESP32 receiver and motors to prevent voltage drops
+- Isolate the information output to avoid delaying the main execution flow.
   
 ## **Hardware**
 - 2 x ESP32
@@ -31,7 +32,7 @@ The system consists of 2 ESP32: a Transmitter and a Receiver
 
 1. **ESP32 Transmitter**   
    - Read Joystick input
-   -  Manipulate input values and apply deadzone filtering to calculate leftSpeed and rightSpeed
+   - Manipulate input values and apply deadzone filtering to calculate leftSpeed and rightSpeed
    - Send data wirelessly to ESP32 Receiver using ESP-NOW
 
 2.  **ESP32 Receiver**
