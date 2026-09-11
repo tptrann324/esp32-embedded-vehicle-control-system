@@ -26,5 +26,5 @@ void setupESPNOW(const uint8_t* receiverMAC) {
 void sendData(const uint8_t* receiverMAC, const ControlData* car, int carSize, esp_err_t &lastResult, esp_err_t &currentResult) {
     currentResult = esp_now_send(receiverMAC, (uint8_t*) car, carSize);
 
-    sendDataDebug(lastResult, currentResult);
+    dataSendDebug(lastResult, currentResult);
 }
