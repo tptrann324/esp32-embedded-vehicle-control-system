@@ -11,6 +11,7 @@
 #include <esp_now.h>
 #include "ControlData.h"
 #include "ESPNOWReceiv.h"
+#include "debugReceiv.h"
 
 extern ControlData Car;         // Do not create new Car, use the one imported from another file  
 extern unsigned long lastSignalTime;
@@ -32,17 +33,14 @@ void ESPNOW::getMACAddress() {
 // Receive Function
 void OnDataSent(const uint8_t* mac, const uint8_t* data, int len) {
     
+    static bool lastReceiveResult = false;
+
     // check packet size/basic validity
-    if (len == sizeof(ControlData)) {
+    if (dataReceiveDebug(len, lastReceiveResult)) {
         // pass received data to system
         memcpy(&Car, data, sizeof(ControlData));
         lastSignalTime = millis();          // Record the time received data
-        Serial.println("Data Received.");
     }
-    else {
-        Serial.println("Failed to receive data.");
-    }
-    return;
 }
 
 // ESPNOW setup and receive data
@@ -50,13 +48,8 @@ void ESPNOW::ESPNOW_setup_receive() {
     WiFi.mode(WIFI_STA);
 
     // Initialize ESP-NOW
-    esp_err_t init = esp_now_init();
-    if (init != ESP_OK) {
-        Serial.println("ESP-NOW Initialization Failed!");
-        init = esp_now_init();
-    }
-    Serial.println("ESP-NOW Ready!");
-    delay(100);
+    esp_err_t initResult = esp_now_init();
+    initDebug(initResult);
 
     // Register callback
     esp_now_register_recv_cb(OnDataSent);

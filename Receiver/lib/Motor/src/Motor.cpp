@@ -1,17 +1,17 @@
 #include <Arduino.h>
 #include "Motor.h"
+#include "debugReceiv.h"
 
 // Attach Motor
 void MotorControl::attachMotor(const int ENA, const int ENB){
 
     bool setupLeft = ledcSetup(0, 1000, 8);
     bool setupRight = ledcSetup(1, 1000, 8);
-    if (!setupLeft || ! setupRight) {
-        Serial.println("Failed to setup Motor");
-    }
+    
+    motorAttachDebug(setupLeft, setupRight);
+
     ledcAttachPin(ENA, 0);
     ledcAttachPin(ENB, 1); 
-    Serial.println("Motor is Ready!");
 }
 
 // Handle digital signal to move forward or back ward
