@@ -3,12 +3,13 @@
 *This project is to create a 4WD car wirelessly controlled by joystick using ESP-NOW communication*
 
 ## **Feature**
-- PWM speed control on motor
+- PWM speed regulation via H-bridege motor drive
 - Wireless Control using ESP-NOW communication
 - Deadzone filtering to avoid joystick drift
 - Failsafe implementation to automatically stop the car upon connection loss
 - Isolate power supplies for ESP32 receiver and motors to prevent voltage drops
-- Isolate the information output to avoid delaying the main execution flow.
+- Isolate the information output to avoid delaying the main execution flow
+- Basic UART debugging via Serial Monitor at 115200 baud
   
 ## **Hardware**
 - 2 x ESP32
