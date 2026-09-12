@@ -4,7 +4,13 @@
 #include "debugReceiv.h"
 
 // Attach Motor
-void MotorControl::attachMotor(const int ENA, const int ENB, const int EN1, const int EN2, const int EN3, const int EN4){
+void MotorControl::attachMotor(const int ENA, const int ENB, const int IN1, const int IN2, const int IN3, const int IN4){
+
+    // Set all to 0 at the beginning
+    digitalWrite(IN1, LOW);
+    digitalWrite(IN2, LOW);
+    digitalWrite(IN3, LOW);
+    digitalWrite(IN4, LOW);
 
     bool setupLeft = ledcSetup(0, 1000, 8);
     bool setupRight = ledcSetup(1, 1000, 8);
@@ -14,13 +20,8 @@ void MotorControl::attachMotor(const int ENA, const int ENB, const int EN1, cons
     ledcAttachPin(ENA, 0);
     ledcAttachPin(ENB, 1); 
 
-    // Set all to 0 at the beginning
-    ledcWrite(0,0);
-    ledcWrite(1,0);
-    digitalWrite(IN1, LOW);
-    digitalWrite(IN2, LOW);
-    digitalWrite(IN3, LOW);
-    digitalWrite(IN4, LOW);
+    ledcWrite(0, 0);
+    ledcWrite(1, 0);
 }
 
 // Handle digital signal to move forward or back ward
