@@ -14,7 +14,7 @@ void initDebug(esp_err_t initResult) {
 }
 
 // Adding ESP32_Receiver Debug
-void addReceiver(esp_err_t addResult) {
+void addReceiverDebug(esp_err_t addResult) {
     if (addResult == ESP_OK) {
         Serial.println("ESP-NOW Transmitter: Receiver Added.");
     } else {

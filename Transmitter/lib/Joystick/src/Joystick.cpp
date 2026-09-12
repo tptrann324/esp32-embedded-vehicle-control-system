@@ -5,7 +5,7 @@ extern ControlData Car;
 
 // CONST Varriable for deadzone filtering
 const int CENTER = 2048;
-const int DEADZONE = 150;
+const int DEADZONE = 350;
 
 // Read joystick Analog Value
 int JoystickControl::joystickAnalogRead(int pin) {
@@ -47,8 +47,8 @@ void JoystickControl::manipulateValue(ControlData* car, int xVal, int yVal) {
     }
 
     // Caluculate and constrain leftSpeed and rightSpeed to prevent PWM overflow
-    Car.leftSpeed = constrain(speed + turn, -255, 255);
-    Car.rightSpeed = constrain(speed - turn, -255, 255);
+    car->leftSpeed = constrain(speed + turn, -255, 255);
+    car->rightSpeed = constrain(speed - turn, -255, 255);
 
     return;
 }

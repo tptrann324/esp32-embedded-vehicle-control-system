@@ -41,5 +41,6 @@ void loop() {
   
   // Send Data
   sendData(receiverMAC, &Car, sizeof(Car), lastSendResult, currentSendResult);
+  delay(20);
 }
 

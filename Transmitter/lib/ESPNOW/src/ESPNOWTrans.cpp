@@ -27,4 +27,5 @@ void sendData(const uint8_t* receiverMAC, const ControlData* car, int carSize, e
     currentResult = esp_now_send(receiverMAC, (uint8_t*) car, carSize);
 
     dataSendDebug(lastResult, currentResult);
+    delay(50);
 }
