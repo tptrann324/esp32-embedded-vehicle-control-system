@@ -23,7 +23,7 @@ void setup() {
   Receiv.attachGPIO();
 
   // Attach Motor
-  Motor.attachMotor(ENA, ENB);
+  Motor.attachMotor(ENA, ENB, IN1, IN2, IN3, IN4);
 
   // Get MAC Address
   Recv.getMACAddress();
@@ -37,7 +37,7 @@ void setup() {
 
 void loop() {
   
-  // Check Fail Safe
+  //Check Fail Safe
   if (!checkFailSafe(lastSignalTime)) {
     Motor.stopMotor(&Car);
   }
@@ -51,7 +51,7 @@ void loop() {
   Motor.speedOutput(&Car, 0, 1);
 
   // Horn Beep Once Press Joystick
-  Horn.BeepOnce(BUZZER);
+  Horn.BeepOnce(&Car,BUZZER);
 }
 
 

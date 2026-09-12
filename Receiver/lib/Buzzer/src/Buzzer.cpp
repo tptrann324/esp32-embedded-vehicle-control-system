@@ -2,10 +2,8 @@
 #include "ControlData.h"
 #include "Buzzer.h"
 
-extern ControlData Car;
-
-void Buzzer::BeepOnce(const int Buzzer) {
-    if (Car.horn == LOW) {      // PRESS = LOW = BEEP VOICE
+void Buzzer::BeepOnce(const ControlData* car, const int Buzzer) {
+    if (car->horn == LOW) {      // PRESS = LOW = BEEP VOICE
         digitalWrite(Buzzer, HIGH);
     }
     else {

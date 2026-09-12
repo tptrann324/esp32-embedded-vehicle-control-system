@@ -7,7 +7,7 @@ class MotorControl{
 public:
 
     // Attach Motor
-    void attachMotor(const int, const int );
+    void attachMotor(const int, const int, const int, const int, const int, const int);
 
     // Handle digital signal to move forward or back ward
     void forward_backward(int, int, int);

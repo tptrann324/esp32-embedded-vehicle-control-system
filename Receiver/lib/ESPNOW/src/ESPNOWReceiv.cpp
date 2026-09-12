@@ -31,7 +31,7 @@ void ESPNOW::getMACAddress() {
 }
 
 // Receive Function
-void OnDataSent(const uint8_t* mac, const uint8_t* data, int len) {
+void OnDataReceive(const uint8_t* mac, const uint8_t* data, int len) {
     
     static bool lastReceiveResult = false;
 
@@ -52,5 +52,5 @@ void ESPNOW::ESPNOW_setup_receive() {
     initDebug(initResult);
 
     // Register callback
-    esp_now_register_recv_cb(OnDataSent);
+    esp_now_register_recv_cb(OnDataReceive);
 }

@@ -4,6 +4,6 @@
 class Buzzer {
 public:
     // Beep Once Function
-    void BeepOnce(const int);
+    void BeepOnce(const ControlData*, const int);
 };
 #endif

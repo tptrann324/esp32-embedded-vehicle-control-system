@@ -9,9 +9,9 @@
 // Initialization Debug 
 void initDebug(esp_err_t initResult) {
     if (initResult == ESP_OK) {
-        Serial.println("ESP-NOW Transmitter: Initialization Done.");
+        Serial.println("ESP-NOW Receiver: Initialization Done.");
     } else{
-        Serial.println("ESP-NOW Transmitter Error: Failed to initialize.");
+        Serial.println("ESP-NOW Receiver Error: Failed to initialize.");
     }
 }
 
