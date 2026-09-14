@@ -53,6 +53,7 @@ flowchart TD
     R --> |Good| M[Update Motor]
 ```
 
+<div style="page-break-after: always;"></div>
 
 ## **File System Organization**
 
